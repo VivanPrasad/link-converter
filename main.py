@@ -16,7 +16,7 @@ import tkinter as tk
 from tkinter import ttk
 
 root = tk.Tk()
-root.option_add("*tearOff", False) # This is always a good idea
+root.option_add("*tearOff", False)
 
 root.columnconfigure(index=0, weight=1)
 root.columnconfigure(index=1, weight=1)
@@ -30,13 +30,11 @@ style = ttk.Style(root)
 root.iconbitmap(f"./icon.ico")
 root.title("Youtube Link Converter")
 
-# Downloaded tcl and theme from azure on github!
+# Downloaded tcl and theme from azure on github! Such a good theme Mr Rai, I'd recommend to use if you ever use Tkinter
 root.tk.call('source', 'forest-dark.tcl')
 style.theme_use('forest-dark')
 
-option_menu_list = ["", "OptionMenu", "Option 1", "Option 2"]
-combo_list = ["Combobox", "Editable item 1", "Editable item 2"]
-readonly_combo_list = ["Readonly combobox", "Item 1", "Item 2"]
+option_menu_list = ["", "File Extentions", ".webm", ".mp4",".mp3"]
 
 # These are the control variables I used (similar to the spritesheets from my game Twisted Empress and my Image Manipulator)
 a = tk.IntVar(value=1)
@@ -98,6 +96,8 @@ button = ttk.Button(widgets_frame, text="Open Link",command=open_link)
 button.grid(row=6, column=0, padx=5, pady=10, sticky="nsew")
 
 
+#Downloads the file. NOTE: it's extremely buggy with the github module and sometimes it does not work. I have got it to work on my computer
+#However on the school computer it does not work. Hopefully it works for you. I have not found a way after a while to solve this problem.
 def download():
     url = entry.get()
     if "youtube" in url:
@@ -136,7 +136,6 @@ paned.add(pane_1, weight=1)
 pane_2 = ttk.Frame(paned)
 paned.add(pane_2, weight=3)
 
-# Notebook
 # Sizegrip
 sizegrip = ttk.Sizegrip(root)
 sizegrip.grid(row=100, column=100, padx=(0, 5), pady=(0, 5))
